@@ -1,0 +1,15 @@
+<?php
+
+use App\Livewire\Kiosk;
+use Illuminate\Support\Facades\Route;
+
+Route::view('/', 'welcome')->name('home');
+
+// Kiosk de pointage : la borne s'authentifie par son token (dans l'URL), pas de login.
+Route::get('/kiosk/{device:token}', Kiosk::class)->name('kiosk');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('dashboard', 'dashboard')->name('dashboard');
+});
+
+require __DIR__.'/settings.php';
