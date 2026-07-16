@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\EmployeeFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,10 +10,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-#[Fillable(['company_id', 'first_name', 'last_name', 'email', 'phone', 'job_title', 'is_active', 'hired_at'])]
+#[Fillable(['company_id', 'user_job_id', 'first_name', 'last_name', 'email', 'phone', 'job_title', 'is_active', 'hired_at'])]
 class Employee extends Model
 {
-    /** @use HasFactory<\Database\Factories\EmployeeFactory> */
+    /** @use HasFactory<EmployeeFactory> */
     use HasFactory, SoftDeletes;
 
     /**
@@ -29,6 +30,11 @@ class Employee extends Model
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function userJob(): BelongsTo
+    {
+        return $this->belongsTo(UserJob::class);
     }
 
     public function credentials(): HasMany

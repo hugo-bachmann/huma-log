@@ -49,6 +49,7 @@ class User extends Authenticatable implements FilamentUser, HasTenants
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_staff' => 'boolean',
         ];
     }
 
@@ -84,6 +85,11 @@ class User extends Authenticatable implements FilamentUser, HasTenants
 
     public function canAccessPanel(Panel $panel): bool
     {
+        // Le panel interne staff est réservé aux membres de l'équipe Huma·log.
+        if ($panel->getId() === 'staff') {
+            return (bool) $this->is_staff;
+        }
+
         return true;
     }
 }

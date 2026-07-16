@@ -2,10 +2,13 @@
 
 namespace App\Filament\Resources\Employees\Schemas;
 
+use Filament\Facades\Filament;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
+use Illuminate\Database\Eloquent\Builder;
 
 class EmployeeForm
 {
@@ -26,8 +29,15 @@ class EmployeeForm
                 TextInput::make('phone')
                     ->tel()
                     ->maxLength(255),
-                TextInput::make('job_title')
-                    ->maxLength(255),
+                Select::make('user_job_id')
+                    ->label('Poste')
+                    ->relationship(
+                        'userJob',
+                        'name',
+                        fn (Builder $query) => $query->where('company_id', Filament::getTenant()->id),
+                    )
+                    ->searchable()
+                    ->preload(),
                 Toggle::make('is_active')
                     ->default(true),
                 DatePicker::make('hired_at'),

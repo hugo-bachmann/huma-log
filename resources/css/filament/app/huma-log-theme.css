@@ -1,0 +1,180 @@
+/* ============================================================================
+   Huma·log — Overrides de thème Filament v5
+   Aligne l'admin sur l'univers marketing (Geist, vert #2FA875, pills, radius 16).
+   La palette « primary » est pilotée côté PanelProvider via Color::hex('#2FA875').
+   ============================================================================ */
+@import url('https://fonts.bunny.net/css?family=geist:400,500,600,700');
+
+/* ---------- TOKENS ---------- */
+:root,
+.fi-body,
+.fi {
+  --hl-green:        #2FA875;
+  --hl-green-deep:   #1F8A5B;
+  --hl-green-darker: #155F40;
+  --hl-green-soft:   #E8F5EE;
+  --hl-green-tint:   #F2FAF6;
+
+  --hl-dark:         #09090B;
+  --hl-grey:         #585858;
+  --hl-light-grey:   #9F9F9F;
+  --hl-bg-grey:      #F8F8F8;
+  --hl-bg-grey-hover:#EDEDED;
+  --hl-border:       rgba(92, 92, 113, 0.20);
+  --hl-border-dark:  #E4E4E7;
+
+  --hl-font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+                  Roboto, sans-serif;
+}
+
+/* ---------- BASE ---------- */
+.fi-body,
+.fi {
+  font-family: var(--hl-font-sans);
+  color: var(--hl-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- TOPBAR ---------- */
+.fi-topbar {
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--hl-border-dark);
+}
+.fi-logo {
+  font-family: var(--hl-font-sans);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--hl-dark);
+}
+.fi-topbar-item-button,
+.fi-icon-btn { border-radius: 100px; }
+
+/* ---------- SIDEBAR ---------- */
+.fi-sidebar-group-label {
+  font-family: var(--hl-font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hl-light-grey);
+}
+.fi-sidebar-item a { border-radius: 10px; }
+.fi-sidebar-item.fi-active .fi-sidebar-item-icon { color: var(--hl-green); }
+.fi-sidebar-item-badge {
+  background: var(--hl-green-soft);
+  color: var(--hl-green-darker);
+  border-radius: 100px;
+}
+.fi-tenant-menu {
+  margin: 12px;
+  padding: 10px;
+  border: 1px solid var(--hl-border-dark);
+  border-radius: 12px;
+  background: var(--hl-bg-grey);
+}
+
+/* ---------- PAGE HEADER ---------- */
+.fi-header-heading,
+.fi-page h1 {
+  font-family: var(--hl-font-sans);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--hl-dark);
+}
+
+/* ---------- BUTTONS (pill) ---------- */
+.fi-btn,
+button.fi-btn {
+  border-radius: 100px;
+  font-family: var(--hl-font-sans);
+  font-weight: 500;
+}
+.fi-btn:active { transform: translateY(1px); }
+
+/* ---------- INPUTS ---------- */
+.fi-input,
+.fi-input-wrp {
+  border-radius: 10px;
+}
+.fi-fo-field-wrp-label {
+  font-family: var(--hl-font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--hl-dark);
+}
+.fi-toggle[aria-checked="true"] { background: var(--hl-green); }
+.fi-checkbox-input:checked,
+.fi-radio-input:checked {
+  background-color: var(--hl-dark);
+  border-color: var(--hl-dark);
+}
+
+/* ---------- CARDS / SECTIONS ---------- */
+.fi-section,
+.fi-card {
+  border: 1px solid var(--hl-border-dark);
+  border-radius: 16px;
+  box-shadow: none;
+}
+.fi-section-header-heading {
+  font-family: var(--hl-font-sans);
+  font-weight: 500;
+  color: var(--hl-dark);
+}
+
+/* ---------- STATS WIDGETS ---------- */
+.fi-wi-stats-overview-stat {
+  border: 1px solid var(--hl-border-dark);
+  border-radius: 16px;
+}
+.fi-wi-stats-overview-stat-value {
+  font-family: var(--hl-font-sans);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--hl-dark);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- TABLES ---------- */
+.fi-ta,
+.fi-ta-ctn {
+  border: 1px solid var(--hl-border-dark);
+  border-radius: 16px;
+}
+.fi-ta-table thead th {
+  font-family: var(--hl-font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--hl-light-grey);
+  background: #FAFAFA;
+}
+.fi-ta-table tbody tr:hover { background: var(--hl-bg-grey); }
+
+/* ---------- BADGES (pill) ---------- */
+.fi-badge {
+  border-radius: 100px;
+  font-family: var(--hl-font-sans);
+  font-weight: 500;
+}
+
+/* ---------- MODAL ---------- */
+.fi-modal-window { border-radius: 20px; }
+.fi-modal-heading {
+  font-family: var(--hl-font-sans);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- NOTIFICATIONS ---------- */
+.fi-no-notification { border-radius: 14px; }
+
+/* ---------- AVATARS ---------- */
+.fi-avatar {
+  background: linear-gradient(135deg, #4D4C55, var(--hl-green-deep));
+  color: #fff;
+  font-weight: 500;
+}

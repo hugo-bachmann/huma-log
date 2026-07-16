@@ -5,24 +5,28 @@
     </head>
     <body class="min-h-screen bg-white antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
         <div class="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
-            <div class="bg-muted relative hidden h-full flex-col p-10 text-white lg:flex dark:border-e dark:border-neutral-800">
-                <div class="absolute inset-0 bg-neutral-900"></div>
-                <a href="{{ route('home') }}" class="relative z-20 flex items-center text-lg font-medium" wire:navigate>
-                    <span class="flex h-10 w-10 items-center justify-center rounded-md">
-                        <x-app-logo-icon class="me-2 h-7 fill-current text-white" />
-                    </span>
-                    {{ config('app.name', 'Laravel') }}
+            <div class="relative hidden h-full flex-col p-10 text-white lg:flex">
+                <div class="absolute inset-0" style="background: linear-gradient(120deg, #09090B 30%, #1F8A5B 140%)"></div>
+                <a href="{{ route('home') }}" class="relative z-20 flex items-center text-lg font-semibold tracking-tight" wire:navigate>
+                    Huma<span style="color: #2FA875">·</span>log
                 </a>
 
-                @php
-                    [$message, $author] = str(Illuminate\Foundation\Inspiring::quotes()->random())->explode('-');
-                @endphp
-
                 <div class="relative z-20 mt-auto">
-                    <blockquote class="space-y-2">
-                        <flux:heading size="lg">&ldquo;{{ trim($message) }}&rdquo;</flux:heading>
-                        <footer><flux:heading>{{ trim($author) }}</flux:heading></footer>
+                    <blockquote class="space-y-4">
+                        <p class="text-2xl font-medium leading-snug tracking-tight">
+                            « Une signature horaire pour chaque collaborateur. Le temps de travail, compté juste. »
+                        </p>
+                        <footer class="text-sm text-white/70">Mathis R. — DRH, groupe de 40 personnes</footer>
                     </blockquote>
+
+                    <div class="mt-10 grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
+                        @foreach ([['800+', 'entreprises'], ['−87 %', 'de saisie'], ['14 j', 'offerts']] as [$stat, $label])
+                            <div>
+                                <div class="text-xl font-medium tabular-nums" style="color: #A8E5C5">{{ $stat }}</div>
+                                <div class="text-xs text-white/60">{{ $label }}</div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
             <div class="w-full lg:p-8">
